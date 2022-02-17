@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+{% extends 'main.html' %}
+
+{% block content %}
+<h1>Home template</h1>
+
+<div>
+    <div>
+        <h3>Browse a category</h3>
+        <hr>
+    </div>
+    <div>
+
+    </div>
+
+    <div>
+        <a href="{% url 'create-category' %}"> Create a category </a>
+    </div>
+    <div>
+        {% for category in categories %}
+        <div>
+        <a href="{% url 'update-category' category.id %}"> Update a category </a>
+        <a href="{% url 'delete-category' category.id %}"> Delete a category </a>
+            <spin>@{{category.participant.username}}</spin>
+            <h5>{{category.id}} -- <a href="{% url 'category' category.id %}"> {{category.name }}</a></h5>
+            <small>@{{category.topic.name}}</small>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock content %}
+</body>
+</html>
