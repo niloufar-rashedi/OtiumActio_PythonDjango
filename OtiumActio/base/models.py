@@ -33,6 +33,8 @@ class Message(models.Model):
         return self.body[0:50]
 class Category(models.Model):
     name = models.CharField(max_length=200)
+    class Meta:
+      verbose_name_plural = "Categories"
     def __str__(self):
         return self.name
 
@@ -46,5 +48,6 @@ class Activity(models.Model):
 
     class Meta:
         ordering = ['-updated', '-created']
+        verbose_name_plural = "Activities"
     def __str__(self):
         return self.name
