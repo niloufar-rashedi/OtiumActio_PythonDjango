@@ -34,11 +34,7 @@ class Message(models.Model):
 class Category(models.Model):
     name = models.CharField(max_length=200)
     class Meta:
-<<<<<<< HEAD
         verbose_name_plural = "Categories"
-=======
-      verbose_name_plural = "Categories"
->>>>>>> a6d6ea5e64ea10a7a44470cc741f083a7ab56401
     def __str__(self):
         return self.name
 
