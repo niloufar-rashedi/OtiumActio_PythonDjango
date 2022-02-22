@@ -8,28 +8,26 @@
 {% extends 'main.html' %}
 
 {% block content %}
-<h1>Home template</h1>
-
+<h1>OtiumActio</h1>
+<h2>Ett latiskt ord för Fritidsaktivitet.</h2>
+<h4>Ett nätverk för gemensamma aktiviteter. Skapa din egen, om det inte finns en här!</h4>
 <div>
     <div>
-        <h3>Browse a category</h3>
+        <h2>kommande aktiviteter...</h2>
         <hr>
     </div>
     <div>
 
     </div>
-
     <div>
-        <a href="{% url 'create-category' %}"> Create a category </a>
-    </div>
-    <div>
-        {% for category in categories %}
+        {% for activity in acitivities %}
         <div>
-        <a href="{% url 'update-category' category.id %}"> Update a category </a>
-        <a href="{% url 'delete-category' category.id %}"> Delete a category </a>
-            <spin>@{{category.participant.username}}</spin>
-            <h5>{{category.id}} -- <a href="{% url 'category' category.id %}"> {{category.name }}</a></h5>
-            <small>@{{category.topic.name}}</small>
+        <a href="{% url 'update-activity' activity.id %}"> Redigera </a>
+        <a href="{% url 'delete-activity' activity.id %}"> Radera bort</a>
+
+            <h5><a href="{% url 'activity' activity.id %}"> {{activity.name }}</a></h5>
+            <spin>Kategori: @{{activity.category.name}}</spin>
+            <p>..............................................</p>
         </div>
         {% endfor %}
     </div>

@@ -33,18 +33,20 @@ class Message(models.Model):
         return self.body[0:50]
 class Category(models.Model):
     name = models.CharField(max_length=200)
+    class Meta:
+        verbose_name_plural = "Categories"
     def __str__(self):
         return self.name
 
 class Activity(models.Model):
     name = models.CharField(max_length=200)
     description = models.TextField(null=True, blank=True)
-    participants = models.ForeignKey(User, on_delete=models.CASCADE)
     category = models.ForeignKey(Category, on_delete=models.CASCADE)
     updated = models.DateTimeField(auto_now=True)
     created = models.DateTimeField(auto_now_add=True)
 
     class Meta:
         ordering = ['-updated', '-created']
+        verbose_name_plural = "Activities"
     def __str__(self):
         return self.name
